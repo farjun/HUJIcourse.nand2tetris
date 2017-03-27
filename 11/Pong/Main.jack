@@ -1,0 +1,52 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/11/Pong/Main.jack
+
+/**
+ * The main class of the Pong game.
+ */
+class Main {
+
+    /** Initializes a Pong game and starts running it. */
+    function void main() {
+        var PongGame game;
+        do PongGame.newInstance();
+        let game = PongGame.getInstance();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+	
+	let sum = 0;
+        let shiftedX = x;
+        let n = 1;
+        let temp = 1;
+        let j = 0;
+
+        while (x > temp | y > temp) {
+            let n = n + 1;
+            let temp = temp + temp;
+        }
+
+	
+        let temp = 1;
+        while (j < n) {
+            if ((temp & y) = temp) {
+                let sum = sum + shiftedX;
+            }
+            let j = j + 1;
+            let temp = temp + temp;
+            let shiftedX = shiftedX + shiftedX;
+        }
+		let temp = 1;
+        while (j < n) {
+            if ((temp & y) = temp) {
+                let sum = sum + shiftedX;
+            }
+            let j = j + 1;
+            let temp = temp + temp;
+            let shiftedX = shiftedX + shiftedX;
+        }
+		return sum;
+}

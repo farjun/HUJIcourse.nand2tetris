@@ -1,0 +1,29 @@
+galsuchetzky, omerbh1
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                    Project 10 - Compiler I - Syntax Analysis
+                    ------------------------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+
+Makefile - a makefile for the project.
+
+JackCompiler - a script that runs the program.
+
+CompilationEngine.java - A class responsible for translating and writing the 
+code in to an XML file in the given format
+
+JackTokenizer.java - This class is the parser class, it's purpose is to 
+read the given code file into an array of tokens and remove all the white spaces 
+and comments.
+
+JackCompiler.java - The main class, responsible for managing the reading of
+the given path, generate the tokens using the JackTokenizer class and translating it to a XML
+file using the CompilationEngine.
+
