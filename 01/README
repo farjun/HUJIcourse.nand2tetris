@@ -1,0 +1,33 @@
+galsuchetzky, omerbh
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                           Project 1 - Elementary Logic Gates
+                           ----------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+And.hdl - And logic gate.
+And16.hdl - and bit by bit 16 bit numbers.
+DMux.hdl - demultiplexer.
+DMux4Way.hdl - demultiplexer with 4 outputs.
+DMux8Way.hdl - demultiplexer with 8 outputs.
+Mux.hdl - multiplexer.
+Mux4Way16.hdl - multiplexer with 4 entrances. 
+Mux8Way16.hdl - multiplexer with 8 entrances. 
+Mux16.hdl - multiplexer for 16 bit numbers.
+Not.hdl - Not logic gate.
+Not16.hdl - Not logic gate for 16 bit numbers.
+Or.hdl - Or logic gate.
+Or8Way.hdl - Or of the bits of an 8 bit number.
+Or16.hdl - Or logic gate for 16 bit numbers.
+Xor.hdl - Xor logic gate.
+
+Remarks
+-------
+* Most of the chips of this project were built using functions created from their 
+  truth tables, therefore the hdl code for these chips represents only pure logic.
