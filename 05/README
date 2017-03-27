@@ -1,0 +1,21 @@
+galsuchetzky, omerbh1
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                           Project 5 - Computer Architecture
+                           ---------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+Memory.hdl - Entire RAM address space.
+CPU.hdl - The Hack CPU.
+Computer.hdl - The platform's top-most chip.
+ExtendAlu.hdl - an extended version of the arithmatic logic unit.
+CpuMul.hdl - an extended version of the Hack CPU.
+
+Remarks
+-------
