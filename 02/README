@@ -1,0 +1,24 @@
+galsuchetzky, omerbh1
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                           Project 2 - Cobinational Chips
+                           ------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+HalfAdder.hdl - sums 2 bits.
+FullAdder.hdl - sums 3 bits.
+Add16.hdl - Adds two 16-bit values.
+Inc16.hdl - increments a 16 bit number (arithmetically).
+ALU.hdl - an arithmatic logic unit.
+ShiftLeft.hdl - doubles a 16 bit number.
+ShiftRight.hdl - divides a 16 bit number by 2.
+Mul.hdl - multiplies 2 16 bit nubers.
+
+Remarks
+-------
