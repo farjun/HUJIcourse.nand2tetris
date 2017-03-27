@@ -1,0 +1,207 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Screen.jack
+
+/**
+ * A library of functions for displaying graphics on the screen.
+ * The Hack physical screen consists of 512 rows (indexed 0..511, top to bottom)
+ * of 256 pixels each (indexed 0..255, left to right). The top left pixel on 
+ * the screen is indexed (0,0).
+ */
+class Screen {
+    static boolean currColor;
+	static Array twoToJ, scr;
+
+    /** Initializes the Screen. */
+    function void init() {
+            var int j, res;
+            let scr = 16384;
+            let currColor = true;
+            let twoToJ = Array.new(16);
+            let j=0;
+            let res = 1;
+            while (j < 16) {
+                let twoToJ[j] = res;
+                let res = res + res;
+                let j = j + 1;
+            }
+            return;
+
+    }
+
+    /** Erases the entire screen. */
+    function void clearScreen() {
+        return;
+    }
+
+    /** Sets the current color, to be used for all subsequent drawXXX commands.
+     *  Black is represented by true, white by false. */
+    function void setColor(boolean b) {
+        let currColor = b;
+        return;
+
+    }
+
+    /** Draws the (x,y) pixel, using the current color. */
+    function void drawPixel(int x, int y) {
+        var int address, value;
+        let address = ((32*y)+(x/16));
+
+        if (currColor){
+            let scr[address] = (scr[address] | twoToJ[x&15]);
+        } else {
+            let scr[address] = scr[address] & (~twoToJ[x&15]);
+        }
+        return;
+    }
+
+    /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
+    function void drawLine(int x1, int y1, int x2, int y2) {
+        var int a, b ,dx ,dy, diff, gradient, temp;
+        let a = 0;
+        let b = 0;
+        let diff = 0;
+        let gradient = 1;
+
+
+        if (x1 = x2){
+            if (y1 > y2){
+                let gradient = -1;
+            }
+            while (~(y1 = y2)){
+
+                do Screen.drawPixel(x1, y1);
+                let y1 = y1 + gradient;
+            }
+            return;
+        }
+        if(y1 = y2){
+            if (x1 < x2){
+                if (currColor){
+                    do Screen.drawEfficientColor(x1, x2, y1);
+                } else {
+                    do Screen.drawEfficientNoColor(x1, x2, y1);
+                }
+                let gradient = -1;
+            } else {
+                if (currColor){
+                    do Screen.drawEfficientColor(x2, x1, y1);
+                } else {
+                    do Screen.drawEfficientNoColor(x2, x1, y1);
+                }
+            }
+
+            //while (~(x1 = x2)){
+            //    do Screen.drawPixel(x1, y1);
+            //    let x1 = x1 + gradient;
+            //}
+            return;
+        }
+
+        if (x1 > x2){
+            let temp = x1;
+            let x1 = x2;
+            let x2 = temp;
+            let temp = y1;
+            let y1 = y2;
+            let y2 = temp;
+        }
+        let dx = x2-x1;
+        let dy = y2-y1;
+
+        if (dy < 0){
+            let gradient = -1;
+            let dy = -dy;
+        }
+        while ((~(a > dx))&(~(b > dy))){
+            do Screen.drawPixel((x1 + a), (y1 + (gradient*b)));
+            if (diff < 0){
+                let a = (a + 1);
+                    let diff = (diff + (dy));
+            } else {
+                let b = (b + 1);
+                let diff = (diff - dx);
+            }
+
+        }
+        return;
+    }
+
+    function void drawEfficientColor(int x1, int x2, int y){
+        var int yBlock, x1Block, x2Block, x1colorNum, x2colorNum, temp;
+
+        let yBlock = y * 32;
+
+        let x1Block = (x1/16);
+        let x2Block = (x2/16);
+
+        let x1colorNum = (~(twoToJ[x1&15] - 1));
+        let x2colorNum = (twoToJ[x2&15] - 1 + twoToJ[x2&15]);
+
+        if (x1Block = x2Block){
+            let scr[yBlock+x1Block] = scr[yBlock+x1Block]|(x1colorNum&x2colorNum);
+        } else {
+            let scr[yBlock+x1Block] = scr[yBlock+x1Block]|x1colorNum;
+            let scr[yBlock+x2Block] = scr[yBlock+x2Block]|x2colorNum;
+            let temp = x1Block + 1;
+            while (~(temp = x2Block)){
+                let scr[yBlock + temp] = -1;
+                let temp = temp + 1;
+            }
+        }
+        return;
+    }
+
+    function void drawEfficientNoColor(int x1, int x2, int y){
+            var int yBlock, x1Block, x2Block, x1colorNum, x2colorNum, temp;
+
+            let yBlock = y * 32;
+
+            let x1Block = (x1/16);
+            let x2Block = (x2/16);
+
+            let x1colorNum = (twoToJ[x1&15] - 1);
+            let x2colorNum = (~(twoToJ[x2&15] - 1 + twoToJ[x2&15]));
+
+            if (x1Block = x2Block){
+                let scr[yBlock+x1Block] = scr[yBlock+x1Block]&(x1colorNum|x2colorNum);
+            } else {
+                let scr[yBlock+x1Block] = scr[yBlock+x1Block]&x1colorNum;
+                let scr[yBlock+x2Block] = scr[yBlock+x2Block]&x2colorNum;
+                let temp = x1Block + 1;
+                while (~(temp = x2Block)){
+                    let scr[yBlock + temp] = 0;
+                    let temp = temp + 1;
+                }
+            }
+            return;
+        }
+
+    /** Draws a filled rectangle whose top left corner is (x1, y1)
+     * and bottom right corner is (x2,y2), using the current color. */
+    function void drawRectangle(int x1, int y1, int x2, int y2) {
+        while(~(y1 > y2)){
+            do Screen.drawLine(x1, y1, x2, y1);
+            let y1 = y1 + 1;
+        }
+        return;
+    }
+
+    /** Draws a filled circle of radius r<=181 around (x,y), using the current color. */
+    function void drawCircle(int x, int y, int r) {
+        var int dy, xDist;
+
+        //let r = r + 1;
+        let dy = -r;
+        //do Output.printInt(xDist);
+
+        while (~(dy>r)){
+            //do Output.printInt(dy);
+            let xDist = Math.sqrt((((r+1)*(r+1))-(dy*dy))+1);
+            do Screen.drawLine(x - (xDist - 1), y + dy, x + (xDist - 1), y + dy);
+            let dy = dy + 1;
+        }
+        return;
+    }
+}

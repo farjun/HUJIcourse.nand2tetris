@@ -1,0 +1,38 @@
+galsuchetzky, omerbh1
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                    Project 12 - The Operating System
+                    ----------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+
+Makefile - a makefile for the project.
+
+Array.jack-		The Array class supplies the service of creating 
+				arrays and disposing them.
+
+Keyboard.jack- 	The Keyboard class supplies the service of reading 
+				the keyboard and reacting to the pressed keys.
+
+Math.jack-		The Math class supplies the service of mathematical 
+				operations such as addition, multipication, division 
+				and square root.
+
+Memory.jack-	The Memory class supplies the service of allocating 
+				and deallocating space in the memory for the user.
+
+Output.jack-	The Output class supplies the service of printing text.
+
+Screen.jack-	The Screen class supplies the service of printing shapes 
+				to the screen.
+
+String.jack-	The String class supplies the service of creating strings.
+
+Sys.jack-		The Sys class supplies the service of initiating the whole 
+				OS, waiting and halting.
