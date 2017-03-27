@@ -1,0 +1,29 @@
+galsuchetzky, omerbh1
+===============================================================================
+Gal Suchetzky, ID 208562975, galsuchetzky@mail.huji.ac.il
+Omer Ben-Haim, ID 305785529, Omer.benhaim@mail.huji.ac.il
+===============================================================================
+
+                    Project 7 - Virtual Machine I - Stack Arithmetic
+                    ------------------------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+
+Makefile - a makefile for the project.
+
+VMTranslator - a script that runs the program.
+
+CodeWriter.java - A class responsible for translating and writing the 
+code into a .asm file.
+
+CodeParser.java - This class is the parser class, it's purpose is to 
+read the given code file into an array and remove all the white spaces 
+and comments.
+
+Main.java - The main class, responsible for managing the reading of 
+the given path using the parser and translating it to a file using 
+the writer.
+
